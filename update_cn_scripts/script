@@ -4,7 +4,7 @@
 # Chris Neal - v1.0 - July 3rd, 2023
 
 # GitHub repo URL
-REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main/"
+REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main"
 
 # List of files to update
 FILES=(
