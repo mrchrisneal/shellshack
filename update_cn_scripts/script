@@ -8,6 +8,17 @@ REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main"
 
 # List of files to update
 FILES=(
+  "cn_nuisance_files/description"
+  "cn_nuisance_files/name"
+  "cn_nuisance_files/prefs_template"
+  "cn_nuisance_files/script"
+  "cn_start_beats/description"
+  "cn_start_beats/name"
+  "cn_start_beats/prefs_template"
+  "cn_start_beats/script"
+  "cn_tailscale_smbfix/description"
+  "cn_tailscale_smbfix/name"
+  "cn_tailscale_smbfix/script"
   "cn_wipe_free_space/description"
   "cn_wipe_free_space/name"
   "cn_wipe_free_space/prefs_template"
