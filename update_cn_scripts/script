@@ -1,29 +1,26 @@
 #!/bin/bash
 
 # update_cn_scripts script
-# Chris Neal - v1.0 - July 3rd, 2023
+# Chris Neal - v1.1 - July 3rd, 2023
 
 # GitHub repo URL
 REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main"
 
-# List of files to update
-FILES=(
-  "cn_nuisance_files/description"
-  "cn_nuisance_files/name"
-  "cn_nuisance_files/prefs_template"
-  "cn_nuisance_files/script"
-  "cn_start_beats/description"
-  "cn_start_beats/name"
-  "cn_start_beats/prefs_template"
-  "cn_start_beats/script"
-  "cn_tailscale_smbfix/description"
-  "cn_tailscale_smbfix/name"
-  "cn_tailscale_smbfix/script"
-  "cn_wipe_free_space/description"
-  "cn_wipe_free_space/name"
-  "cn_wipe_free_space/prefs_template"
-  "cn_wipe_free_space/script"
-)
+# Change directory and exit if this fails
+cd /boot/config/plugins/user.scripts/scripts/update_cn_scripts || exit
+
+# Grab catalog for updater (list of files to grab and dirs to create)
+  echo "Updating catalog..."
+  if curl -s -o "catalog" "$REPO_URL/update_cn_scripts/catalog"; then
+    echo "Updated catalog successfully."
+    sleep 3s
+  else
+    echo "Failed to update catalog."
+    exit 1
+  fi
+
+# Load catalog/file list from file
+source /boot/config/plugins/user.scripts/scripts/update_cn_scripts/catalog
 
 # Function to update a file
 update_file() {
@@ -38,12 +35,26 @@ update_file() {
   fi
 }
 
+# Function to check and create directories
+check_and_create_dirs() {
+  for dir in "${DIRECTORIES[@]}"; do
+    if [[ ! -d "$dir" ]]; then
+      echo "Creating directory: $dir"
+      mkdir "$dir"
+    else
+      echo "Directory exists: $dir"
+    fi
+  done
+}
+
 # Main script logic
 echo "update_cn_scripts Script v1.0"
 echo "--------------------------"
 
 # Change directory to user scripts path and exit the script if cd fails
 cd /boot/config/plugins/user.scripts/scripts/ || exit
+
+check_and_create_dirs
 
 for file in "${FILES[@]}"; do
   update_file "$file"
