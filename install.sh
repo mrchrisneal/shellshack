@@ -8,7 +8,7 @@ FILES=(
 )
 
 # Destination folder for downloaded files
-DEST_FOLDER="/boot/config/plugins/user.scripts/scripts/update_cn_scripts/"
+DEST_FOLDER="/boot/config/plugins/user.scripts/scripts/update_cn_scripts"
 
 # Function to download and place the files
 download_files() {
