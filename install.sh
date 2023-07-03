@@ -35,6 +35,6 @@ download_files
 
 # Execute the downloaded "script" file
 chmod +x "$DEST_FOLDER/script"
-"$DEST_FOLDER/script"
+bash "$DEST_FOLDER/script"
 
 echo "Script execution completed."
