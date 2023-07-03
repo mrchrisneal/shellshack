@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# cn_tailscale_smbfix script
+# Chris Neal - v1.0 - July 2nd, 2023
+
+# Supposedly this is a known issue in unRAID 6.12.x?
+# https://github.com/tailscale/tailscale/issues/6856 (fix below was copied from this page)
+# https://www.reddit.com/r/Tailscale/comments/qmfcaw/smb_issues_via_tailscale/
+# https://forums.unraid.net/bug-reports/stable-releases/6120-tailscale-smb-ssh-and-gui-unable-to-connect-r2471/
+
+tailscale serve tcp:445 tcp://localhost:445
+

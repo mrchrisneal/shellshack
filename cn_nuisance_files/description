@@ -1,0 +1,3 @@
+This configurable script deletes nuisance files/folders created by Explorer and Finder. 
+Edit the preferences file before running, located here: 
+/boot/config/plugins/user.scripts/scripts/cn_nuisance_files/prefs

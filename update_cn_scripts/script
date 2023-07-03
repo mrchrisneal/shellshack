@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# update_cn_scripts script
+# Chris Neal - v1.0 - July 3rd, 2023
+
+# GitHub repo URL
+REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main/"
+
+# List of files to update
+FILES=(
+  "cn_wipe_free_space/description"
+  "cn_wipe_free_space/name"
+  "cn_wipe_free_space/prefs_template"
+  "cn_wipe_free_space/script"
+)
+
+# Function to update a file
+update_file() {
+  local file="$1"
+  local url="$REPO_URL/$file"
+
+  echo "Updating $file..."
+  if curl -s -o "$file" "$url"; then
+    echo "Updated $file successfully."
+  else
+    echo "Failed to update $file."
+  fi
+}
+
+# Main script logic
+echo "update_cn_scripts Script v1.0"
+echo "--------------------------"
+
+# Change directory to user scripts path and exit the script if cd fails
+cd /boot/config/plugins/user.scripts/scripts/ || exit
+
+for file in "${FILES[@]}"; do
+  update_file "$file"
+done
+
+echo "Update completed."

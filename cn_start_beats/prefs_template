@@ -1,0 +1,5 @@
+#!/bin/bash
+
+BEATS=('metricbeat' 'filebeat') ## Specify beats to start
+VER="8.7.1" ## Specify version of beats
+MAINDIR="/mnt/user/system/beats" ## Path containing the beats folders

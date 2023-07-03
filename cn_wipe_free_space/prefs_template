@@ -1,0 +1,5 @@
+#!/bin/bash
+
+DISKS=("disk1" "disk2" "disk3" "disk4" "disk5")  # Array of disks to process (cache is also a valid option)
+
+

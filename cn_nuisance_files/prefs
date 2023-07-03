@@ -1,0 +1,23 @@
+#!/bin/bash
+
+### ----------- ###
+### USER CONFIG ###
+### ----------- ###
+
+# Set to "true" to enable dry run and just list entities -- set to "false" to delete entities
+dry_run="true" 
+
+# Set path to user shares (this should be "/mnt/user/") -- this variable is mostly for testing purposes
+base_path="/mnt/user/" 
+
+# Specify user shares to search (case sensitive, separate with spaces and enclose in double quotes)
+declare -a StringArray=("ASquared" "Files" "isos" "Media" "Tools" "Transfer" "Video") 
+
+# Toggle entities to delete ("true" to list/remove, "false" to skip)
+# Note that the "del_mac_underscores" toggle will also delete "._.DS_Store" files
+del_desktop_ini="true" # desktop.ini
+del_thumbs_db="true" # Thumbs.db
+del_ds_store="true" # .DS_Store
+del_ds_store_other="false" # ._.DS_Store
+del_macosx_folder="true" # __MACOSX (directory)
+del_mac_underscores="true" # ._MACOSX underscore files (also deletes "._.DS_Store" files)

@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# cn_wipe_free_space script
+# Chris Neal - v1.0 - July 2nd, 2023
+# SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/cn_wipe_free_space/prefs
+
+# --- BEGIN MAIN SCRIPT ---
+
+# Load preferences from file
+source /boot/config/plugins/user.scripts/scripts/cn_wipe_free_space/prefs
+
+# Check if the disks variable is empty/nonexistent, and exit if true
+if [ -z "${DISKS}" ]; then
+  echo "Error: Disks are not defined in the prefs file. Exiting..."
+  exit 1
+fi
+
+# For each disk, create one 100MB file and fill another infinitely large file until the disk is full, then remove both files
+for disk in "${DISKS[@]}"; do
+  echo "Wiping free space on $disk..."
+  dd if=/dev/zero of=/mnt/"$disk"/zero.small.file bs=1024 count=102400
+  cat /dev/zero > /mnt/"$disk"/zero.large.file
+  sync ; sleep 5 ; sync
+  rm /mnt/"$disk"/zero.small.file
+  rm /mnt/"$disk"/zero.large.file
+  echo "Wipe complete."
+done
+
+# Unset the variable/array just in case
+unset DISKS

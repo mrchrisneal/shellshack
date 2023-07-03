@@ -1,0 +1,206 @@
+#!/bin/bash
+
+# cn_nuisance_files (removal) script 
+# Chris Neal - v1.4 - July 3rd, 2023
+# This configurable script deletes nuisance files created by Windows Explorer and Mac OS(X) Finder.
+
+# -CAUTION- -CAUTION- -CAUTION- -CAUTION- -CAUTION- #
+#                                                   #
+#           This is a DESTRUCTIVE script!           #
+#       Make sure you know what you are doing!      #
+#                                                   #
+# -CAUTION- -CAUTION- -CAUTION- -CAUTION- -CAUTION- #
+
+# Load preferences from file
+source /boot/config/plugins/user.scripts/scripts/cn_nuisance_files/prefs
+
+# Check if the variables in the prefs file are empty/nonexistent, and exit if true
+checked_variables=("dry_run" "base_path" "StringArray" "del_desktop_ini" "del_thumbs_db" "del_ds_store" "del_ds_store_other" "del_macosx_folder" "del_mac_underscores")
+
+for var in "${checked_variables[@]}"; do
+  if [[ -z "${!var}" ]]; then
+	echo "Error: $var is not defined in the prefs file. Exiting..."
+	exit 1
+  fi
+done
+
+### ----------------- ###
+### BEGIN MAIN SCRIPT ###
+### ----------------- ###
+
+echo " "
+echo "Nuisance File Deletion Script - v1.3 (2/19/2023)"
+echo "This script deletes nuisance files (and folders) created by Explorer and Finder."
+echo "Set user shares and toggle items for removal within the script itself."
+echo " "
+
+if [ "$dry_run" == "true"  ]; then
+	echo "   ####################################";
+	echo "   ######### DRY RUN ENABLED ##########";
+	echo "   ##### NO FILES WILL BE REMOVED #####";
+	echo "   ####################################";
+	echo " "
+	elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Dry run is not enabled, files will be deleted."
+		echo " "
+	else
+        echo "Warning: dry_run variable was not set! Set this to 'true' or 'false' before running!"
+fi
+
+echo "## FILE TYPES SCHEDULED FOR REMOVAL: ##"
+if [ "$del_desktop_ini" == "true" ]; then 
+    echo "EXPLORER: desktop.ini";
+fi
+if [ "$del_thumbs_db" == "true" ]; then 
+    echo "EXPLORER: Thumbs.db";
+fi
+if [ "$del_macosx_folder" == "true" ]; then 
+    echo "FINDER: __MACOSX (directory)";
+fi
+if [ "$del_ds_store" == "true" ]; then 
+    echo "FINDER: .DS_Store";
+fi
+if [ "$del_ds_store_other" == "true" ]; then 
+    echo "FINDER: ._.DS_Store";
+fi
+if [ "$del_mac_underscores" == "true" ]; then 
+    echo "FINDER: ._ (Mac underscore files)";
+fi
+echo " "
+sleep 1
+echo "Now searching for files... (this may take a while)"
+echo " "
+
+# desktop.ini
+if [ "$del_desktop_ini" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing desktop.ini files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -maxdepth 9999 -noleaf -type f -name 'desktop.ini';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing desktop.ini files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -maxdepth 9999 -noleaf -type f -name 'desktop.ini' -exec rm "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_desktop_ini" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping desktop.ini files..."
+else
+    echo "Warning: del_desktop_ini variable was not set (skipping)"
+fi
+echo " "
+
+# Thumbs.db
+if [ "$del_thumbs_db" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing Thumbs.db files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -maxdepth 9999 -noleaf -type f -name 'Thumbs.db';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing Thumbs.db files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -maxdepth 9999 -noleaf -type f -name 'Thumbs.db' -exec rm "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_thumbs_db" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping Thumbs.db files..."
+else
+    echo "Warning: del_thumbs_db variable was not set (skipping)"
+fi
+echo " "
+
+# .DS_Store
+if [ "$del_ds_store" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing .DS_Store files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -maxdepth 9999 -noleaf -type f -name '.DS_Store';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing .DS_Store files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -maxdepth 9999 -noleaf -type f -name '.DS_Store' -exec rm "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_ds_store" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping .DS_Store files..."
+else
+    echo "Warning: del_ds_store variable was not set (skipping)"
+fi
+echo " "
+
+# ._.DS_Store
+if [ "$del_ds_store_other" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing ._.DS_Store files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -maxdepth 9999 -noleaf -type f -name '._.DS_Store';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing ._.DS_Store files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -maxdepth 9999 -noleaf -type f -name '._.DS_Store' -exec rm "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_ds_store_other" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping ._.DS_Store files..."
+else
+    echo "Warning: del_ds_store_other variable was not set (skipping)"
+fi
+echo " "
+
+# __MACOSX (directory)
+if [ "$del_macosx_folder" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing __MACOSX directories..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -depth -maxdepth 9999 -noleaf -type d -name '__MACOSX';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing __MACOSX directories..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -depth -maxdepth 9999 -noleaf -type d -name '__MACOSX' -exec rm -r "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_macosx_folder" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping __MACOSX directories..."
+else
+    echo "Warning: del_macosx_folder variable was not set (skipping)"
+fi
+echo " "
+
+# ._ (Mac underscore) files
+if [ "$del_mac_underscores" == "true" ]; then # Removal of entity type enabled
+    if [ "$dry_run" == "true" ]; then # Dryrun enabled, only list entities
+        echo "Listing ._ (Mac underscore) files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+        	find $base_path$val -maxdepth 9999 -noleaf -type f -name '._*';
+        done
+    elif [ "$dry_run" == "false" ]; then # Dryrun disabled, delete found entities
+        echo "Removing ._ (Mac underscore) files..."
+        for val in "${StringArray[@]}"; do # Iterate through the array of user shares
+            find $base_path$val -maxdepth 9999 -noleaf -type f -name '._*' -exec rm "{}" \; # Feed found entities into the rm command
+        done
+    else
+        echo "Warning: dry_run variable was not set (skipping)"
+    fi
+elif [ "$del_mac_underscores" == "false" ]; then # Removal of entity type disabled
+    echo "Skipping ._ (Mac underscore) files..."
+else
+    echo "Warning: del_mac_underscores variable was not set (skipping)"
+fi
+echo " "
+
+echo "Finished!"

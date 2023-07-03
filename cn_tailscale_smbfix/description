@@ -1,0 +1,2 @@
+Force Tailscale to serve port 445 over the 'tailnet.'
+Recommended only for use with the plugin version of Tailscale (not Docker).

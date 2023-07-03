@@ -1,0 +1,2 @@
+Wipes free space on drives specified in the 'prefs' file, located here:
+/boot/config/plugins/user.scripts/scripts/cn_wipe_free_space/prefs
