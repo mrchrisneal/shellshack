@@ -1,4 +1,4 @@
-# ShellShack for unRAID (Collection of User Scripts)
+# ShellShack for unRAID (User Scripts Collection)
 Personal repository of random user scripts for unRAID.
 Comes with an updater of sorts.
 
