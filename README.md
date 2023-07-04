@@ -3,6 +3,9 @@ Personal repository of random user scripts for unRAID.
 Comes with an updater of sorts.
 
 ## Important Notes
+**RUN THESE SCRIPTS AT YOUR OWN RISK.** This provided collection of scripts is for informational and educational purposes only, without any warranties or guarantees. We do not ensure the safety or security of the scripts, and usage is at your own risk. We are not liable for any damages or legal compliance issues arising from their use.
+
+## Scripts Need Additional Setup
 Some scripts come bundled with a `prefs_template` file. These scripts need additional setup before they will run. 
 
 Make a copy of this file, call it `prefs` (without the `_template` part) and place it in the same directory, then edit the variables inside the file to your liking. Hopefully the variables are somewhat self-explanatory.
