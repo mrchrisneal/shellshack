@@ -7,4 +7,6 @@ Some scripts come bundled with a `prefs_template` file. Make a copy of this file
 
 ## Installation
 In an unRAID terminal, enter the following command:
-`curl -sSL https://raw.githubusercontent.com/mrchrisneal/shellshack/main/install.sh | bash`
+```
+curl -sSL https://raw.githubusercontent.com/mrchrisneal/shellshack/main/install.sh | bash
+```
