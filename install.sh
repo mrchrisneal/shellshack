@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# ShellShack unRAID User Scripts Installer
+# Chris Neal - v1.1 - July 3rd, 2023
+
 # URLs of the files to download
 FILES=(
   "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_cn_scripts/script"
@@ -24,7 +27,7 @@ download_files() {
 }
 
 # Main script logic
-echo "GitHub File Downloader Script"
+echo "ShellShack Install Script v1.0"
 echo "----------------------------"
 
 # Create destination folder if it doesn't exist
@@ -37,4 +40,6 @@ download_files
 chmod +x "$DEST_FOLDER/script"
 bash "$DEST_FOLDER/script"
 
-echo "Script execution completed."
+echo "Install script completed!"
+echo "IMPORTANT: Some scripts still need additional setup! See Github for more info."
+echo "https://github.com/mrchrisneal/shellshack"
