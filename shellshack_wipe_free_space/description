@@ -1,0 +1,4 @@
+Wipes free space on drives specified in the 'prefs' file, located here:
+/boot/config/plugins/user.scripts/scripts/shellshack_wipe_free_space/prefs
+Based on the script by Opawesome
+https://forums.unraid.net/topic/110020-wipe-free-space/?do=findComment&comment=1004407

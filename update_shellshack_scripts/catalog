@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# update_shellshack_scripts file catalog
+# Chris Neal - v1.1 - July 3rd, 2023
+
+# List of files to update
+FILES=(
+  "shellshack_nuisance_files/description"
+  "shellshack_nuisance_files/name"
+  "shellshack_nuisance_files/prefs_template"
+  "shellshack_nuisance_files/script"
+
+  "shellshack_start_beats/description"
+  "shellshack_start_beats/name"
+  "shellshack_start_beats/prefs_template"
+  "shellshack_start_beats/script"
+
+  "shellshack_tailscale_smbfix/description"
+  "shellshack_tailscale_smbfix/name"
+  "shellshack_tailscale_smbfix/script"
+  
+  "shellshack_wipe_free_space/description"
+  "shellshack_wipe_free_space/name"
+  "shellshack_wipe_free_space/prefs_template"
+  "shellshack_wipe_free_space/script"
+)
+
+# List of directories to check and create if necessary
+DIRECTORIES=(
+  "shellshack_nuisance_files"
+  "shellshack_start_beats"
+  "shellshack_tailscale_smbfix"
+  "shellshack_wipe_free_space"
+)

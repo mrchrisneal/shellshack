@@ -1,8 +1,9 @@
 #!/bin/bash
 
-# cn_nuisance_files (removal) script 
+# shellshack_nuisance_files (removal) script 
 # Chris Neal - v1.4 - July 3rd, 2023
 # This configurable script deletes nuisance files created by Windows Explorer and Mac OS(X) Finder.
+# SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_start_beats/prefs
 
 # -CAUTION- -CAUTION- -CAUTION- -CAUTION- -CAUTION- #
 #                                                   #
@@ -12,7 +13,7 @@
 # -CAUTION- -CAUTION- -CAUTION- -CAUTION- -CAUTION- #
 
 # Load preferences from file
-source /boot/config/plugins/user.scripts/scripts/cn_nuisance_files/prefs
+source /boot/config/plugins/user.scripts/scripts/shellshack_nuisance_files/prefs
 
 # Check if the variables in the prefs file are empty/nonexistent, and exit if true
 checked_variables=("dry_run" "base_path" "StringArray" "del_desktop_ini" "del_thumbs_db" "del_ds_store" "del_ds_store_other" "del_macosx_folder" "del_mac_underscores")
@@ -29,7 +30,7 @@ done
 ### ----------------- ###
 
 echo " "
-echo "Nuisance File Deletion Script - v1.3 (2/19/2023)"
+echo "ShellShack Nuisance File Removal Script - v1.3 (2/19/2023)"
 echo "This script deletes nuisance files (and folders) created by Explorer and Finder."
 echo "Set user shares and toggle items for removal within the script itself."
 echo " "

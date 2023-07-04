@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# cn_start_beats script
+# shellshack_start_beats script
 # Chris Neal - v1.0 - July 2nd, 2023
 # Based on the script by u/warkolm - https://www.reddit.com/r/unRAID/comments/8kvcti/elastic_beats_on_unraid_tute/
-# SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/cn_start_beats/prefs
+# SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_start_beats/prefs
 
 # --- BEGIN MAIN SCRIPT ---
 
 # Load preferences from file
-source /boot/config/plugins/user.scripts/scripts/cn_start_beats/prefs
+source /boot/config/plugins/user.scripts/scripts/shellshack_start_beats/prefs
 
 # Check if the variables in the prefs file are empty/nonexistent, and exit if true
 checked_variables=("BEATS" "VER" "MAINDIR")

@@ -1,0 +1,5 @@
+Run Elastic Beats specified in the 'prefs' file, located here:
+/boot/config/plugins/user.scripts/scripts/shellshack_start_beats/prefs
+(Beats must already be configured to run.)
+Based on the script by u/warkolm
+https://www.reddit.com/r/unRAID/comments/8kvcti/elastic_beats_on_unraid_tute/

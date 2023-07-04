@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# cn_tailscale_smbfix script
+# shellshack_tailscale_smbfix script
 # Chris Neal - v1.0 - July 2nd, 2023
 
 # Supposedly this is a known issue in unRAID 6.12.x?

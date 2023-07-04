@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# update_cn_scripts script
+# update_shellshack_scripts script
 # Chris Neal - v1.1 - July 3rd, 2023
 
 # GitHub repo URL
 REPO_URL="https://raw.githubusercontent.com/mrchrisneal/shellshack/main"
 
 # Change directory and exit if this fails
-cd /boot/config/plugins/user.scripts/scripts/update_cn_scripts || exit
+cd /boot/config/plugins/user.scripts/scripts/update_shellshack_scripts || exit
 
 # Grab catalog for updater (list of files to grab and dirs to create)
   echo "Updating catalog..."
-  if curl -s -o "catalog" "$REPO_URL/update_cn_scripts/catalog"; then
+  if curl -s -o "catalog" "$REPO_URL/update_shellshack_scripts/catalog"; then
     echo "Updated catalog successfully."
     sleep 3s
   else
@@ -20,7 +20,7 @@ cd /boot/config/plugins/user.scripts/scripts/update_cn_scripts || exit
   fi
 
 # Load catalog/file list from file
-source /boot/config/plugins/user.scripts/scripts/update_cn_scripts/catalog
+source /boot/config/plugins/user.scripts/scripts/update_shellshack_scripts/catalog
 
 # Function to update a file
 update_file() {
@@ -48,7 +48,7 @@ check_and_create_dirs() {
 }
 
 # Main script logic
-echo "update_cn_scripts Script v1.0"
+echo "update_shellshack_scripts v1.0"
 echo "--------------------------"
 
 # Change directory to user scripts path and exit the script if cd fails

@@ -5,13 +5,13 @@
 
 # URLs of the files to download
 FILES=(
-  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_cn_scripts/script"
-  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_cn_scripts/name"
-  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_cn_scripts/description"
+  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_shellshack_scripts/script"
+  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_shellshack_scripts/name"
+  "https://raw.githubusercontent.com/mrchrisneal/shellshack/main/update_shellshack_scripts/description"
 )
 
 # Destination folder for downloaded files
-DEST_FOLDER="/boot/config/plugins/user.scripts/scripts/update_cn_scripts"
+DEST_FOLDER="/boot/config/plugins/user.scripts/scripts/update_shellshack_scripts"
 
 # Function to download and place the files
 download_files() {

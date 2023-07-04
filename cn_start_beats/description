@@ -1,3 +1,0 @@
-Run Elastic Beats specified in the prefs file:
-/boot/config/plugins/user.scripts/scripts/cn_start_beats/prefs
-(Beats must already be configured to run.)
