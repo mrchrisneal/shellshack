@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # update_shellshack_scripts file catalog
-# Chris Neal - v1.1 - July 3rd, 2023
+# Chris Neal - v1.2 - July 12th, 2023
 
 # List of files to update
 FILES=(
@@ -23,6 +23,10 @@ FILES=(
   "shellshack_wipe_free_space/name"
   "shellshack_wipe_free_space/prefs_template"
   "shellshack_wipe_free_space/script"
+  
+  "shellshack_disk_assignments/description"
+  "shellshack_disk_assignments/name"
+  "shellshack_disk_assignments/script"
 )
 
 # List of directories to check and create if necessary

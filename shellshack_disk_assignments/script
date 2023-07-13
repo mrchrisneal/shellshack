@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Input disks.ini file
+input_file="/var/local/emhttp/disks.ini"
+
+# Output text file
+output_file="/boot/config/diskassignments.backup.txt"
+
+# disks.ini backup file location
+copied_file="/boot/config/diskassignments.ini.backup.txt"
+
+# Copy disks.ini to a new location
+cp "$input_file" "$copied_file"
+
+# Clear the output file
+> "$output_file"
+
+# Read the copied file line by line
+while IFS= read -r line; do
+  # When line starts with [ or id= then print it
+  if [[ $line == \[* ]] || [[ $line == id=* ]]; then
+    echo "$line" >> "$output_file"
+  fi
+done < "$copied_file"
+
+echo "Finished writing file to $output_file and $copied_file"
