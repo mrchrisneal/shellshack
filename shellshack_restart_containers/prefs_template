@@ -1,0 +1,7 @@
+#!/bin/bash
+
+### ----------- ###
+### USER CONFIG ###
+### ----------- ###
+
+docker_containers=('plex' 'pihole') ## Specify containers to restart -- TIP: run "docker ps -a" in a console to find container names

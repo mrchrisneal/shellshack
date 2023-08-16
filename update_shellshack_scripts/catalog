@@ -9,20 +9,29 @@ FILES=(
   "shellshack_nuisance_files/name"
   "shellshack_nuisance_files/prefs_template"
   "shellshack_nuisance_files/script"
+
   "shellshack_start_beats/description"
   "shellshack_start_beats/name"
   "shellshack_start_beats/prefs_template"
   "shellshack_start_beats/script"
+
   "shellshack_tailscale_smbfix/description"
   "shellshack_tailscale_smbfix/name"
   "shellshack_tailscale_smbfix/script"
+
   "shellshack_wipe_free_space/description"
   "shellshack_wipe_free_space/name"
   "shellshack_wipe_free_space/prefs_template"
   "shellshack_wipe_free_space/script"
+
   "shellshack_disk_assignments/description"
   "shellshack_disk_assignments/name"
   "shellshack_disk_assignments/script"
+
+  "shellshack_restart_containers/description"
+  "shellshack_restart_containers/name"
+  "shellshack_restart_containers/prefs_template"
+  "shellshack_restart_containers/script"
 )
 
 # List of directories to check and create if necessary
@@ -32,4 +41,5 @@ DIRECTORIES=(
   "shellshack_tailscale_smbfix"
   "shellshack_wipe_free_space"
   "shellshack_disk_assignments"
+  "shellshack_restart_containers"
 )
