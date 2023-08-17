@@ -1,11 +1,20 @@
 #!/bin/bash
 
 # shellshack_restart_containers script
-# Chris Neal - v1.1 - August 16th, 2023
+# Chris Neal - v1.2 - August 16th, 2023
 # SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_restart_containers/prefs
 
 # Load preferences from file
 source /boot/config/plugins/user.scripts/scripts/shellshack_restart_containers/prefs
+
+# Check if the variables in the prefs file are empty/nonexistent, and exit if true
+checked_variables=("docker_containers")
+for var in "${checked_variables[@]}"; do
+  if [[ -z "${!var}" ]]; then
+	echo "Error: $var is not defined in the prefs file. Exiting..."
+	exit 1
+  fi
+done
 
 for container in "${docker_containers[@]}"; do
   # Using a Go template expression to extract only the value of the State.Status field
