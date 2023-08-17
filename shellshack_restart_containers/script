@@ -1,10 +1,20 @@
 #!/bin/bash
 
 # shellshack_restart_containers script
-# Chris Neal - v1.0 - August 15th, 2023
+# Chris Neal - v1.1 - August 16th, 2023
 # SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_restart_containers/prefs
 
+# Load preferences from file
+source /boot/config/plugins/user.scripts/scripts/shellshack_restart_containers/prefs
+
 for container in "${docker_containers[@]}"; do
-  echo "Restarting $container"
-  docker restart "$container"
+  # Using a Go template expression to extract only the value of the State.Status field
+  container_status=$(docker inspect -f '{{.State.Status}}' "$container")
+  
+  if [ "$container_status" = "running" ]; then
+    echo "Restarting $container"
+    docker restart "$container"
+  else
+    echo "$container is not running, skipping restart..."
+  fi
 done
