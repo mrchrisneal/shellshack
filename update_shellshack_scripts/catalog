@@ -32,6 +32,11 @@ FILES=(
   "shellshack_restart_containers/name"
   "shellshack_restart_containers/prefs_template"
   "shellshack_restart_containers/script"
+
+  "shellshack_restart_vms/description"
+  "shellshack_restart_vms/name"
+  "shellshack_restart_vms/prefs_template"
+  "shellshack_restart_vms/script"
 )
 
 # List of directories to check and create if necessary
@@ -42,4 +47,5 @@ DIRECTORIES=(
   "shellshack_wipe_free_space"
   "shellshack_disk_assignments"
   "shellshack_restart_containers"
+  "shellshack_restart_vms"
 )
