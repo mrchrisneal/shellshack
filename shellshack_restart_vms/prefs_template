@@ -1,0 +1,7 @@
+#!/bin/bash
+
+### ----------- ###
+### USER CONFIG ###
+### ----------- ###
+
+virtual_machines=('Ubuntu Server' 'Windows 10') ## Specify VMs to restart -- TIP: run "virsh list --all --name" in a console to find VM names

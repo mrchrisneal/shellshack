@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# shellshack_restart_vms script
+# Chris Neal - v1.0 - August 18th, 2023
+# SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_restart_vms/prefs
+
+# Load preferences from file
+source /boot/config/plugins/user.scripts/scripts/shellshack_restart_vms/prefs
+
+# Check if the variables in the prefs file are empty/nonexistent, and exit if true
+checked_variables=("virtual_machines")
+for var in "${checked_variables[@]}"; do
+  if [[ -z "${!var}" ]]; then
+	echo "Error: $var is not defined in the prefs file. Exiting..."
+	exit 1
+  fi
+done
+
+for vm in "${virtual_machines[@]}"; do
+  # Check if the VM is running
+  vm_status=$(virsh list --name --state-running | grep -w "$vm")
+  if [ -n "$vm_status" ]; then
+    # VM is running, so reboot it
+    echo "Rebooting $vm..."
+    virsh reboot "$vm"
+  else
+    echo "$vm is not running."
+  fi
+done
