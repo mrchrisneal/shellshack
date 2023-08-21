@@ -1,3 +1,4 @@
 This configurable script obtains the external IP address of Docker container(s). 
+Optionally, obtain the WAN IP of the unRAID server directly.
 Edit the 'prefs' file before running, located here: 
 /boot/config/plugins/user.scripts/scripts/shellshack_container_external_ip/prefs

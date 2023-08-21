@@ -5,3 +5,7 @@
 ### ----------- ###
 
 docker_containers=('binhex-delugevpn' 'plex') ## Specify containers to restart -- TIP: run "docker ps -a" in a console to find container names
+
+obtain_wan_ip_directly="true" ## Specify whether or not to obtain the WAN IP of the unRAID server directly (as opposed to inside a container)
+
+external_ip_provider="ifconfig.me" ## External IP provider URL (examples: ifconfig.me, ipinfo.io/ip, ipecho.net/plain)

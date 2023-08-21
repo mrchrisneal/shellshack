@@ -1,14 +1,14 @@
 #!/bin/bash
 
 # shellshack_container_external_ip script
-# Chris Neal - v1.0 - August 20th, 2023
+# Chris Neal - v1.1 - August 21st, 2023
 # SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_container_external_ip/prefs
 
 # Load preferences from file
 source /boot/config/plugins/user.scripts/scripts/shellshack_container_external_ip/prefs
 
 # Check if the variables in the prefs file are empty/nonexistent, and exit if true
-checked_variables=("docker_containers")
+checked_variables=("docker_containers" "obtain_wan_ip_directly" "external_ip_provider")
 for var in "${checked_variables[@]}"; do
   if [[ -z "${!var}" ]]; then
 	echo "Error: $var is not defined in the prefs file. Exiting..."
@@ -16,15 +16,20 @@ for var in "${checked_variables[@]}"; do
   fi
 done
 
+if [ "$obtain_wan_ip_directly" == "true"  ]; then
+  echo "unRAID WAN IP:"
+  curl -s "$external_ip_provider"
+  echo -e "\n"
+fi
+
 for container in "${docker_containers[@]}"; do
   # Using a Go template expression to extract only the value of the State.Status field
   container_status=$(docker inspect -f '{{.State.Status}}' "$container")
   if [ "$container_status" = "running" ]; then
     echo "$container external IP:"
-    docker exec "$container" curl -s ifconfig.me
+    docker exec "$container" curl -s "$external_ip_provider"
     echo -e "\n"
   else
-    echo "$container is not running, skipping..."
-    echo -e "\n"
+    echo -e "$container is not running, skipping... \n"
   fi
 done
