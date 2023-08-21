@@ -37,6 +37,11 @@ FILES=(
   "shellshack_restart_vms/name"
   "shellshack_restart_vms/prefs_template"
   "shellshack_restart_vms/script"
+
+  "shellshack_container_external_ip/description"
+  "shellshack_container_external_ip/name"
+  "shellshack_container_external_ip/prefs_template"
+  "shellshack_container_external_ip/script"
 )
 
 # List of directories to check and create if necessary
@@ -48,4 +53,5 @@ DIRECTORIES=(
   "shellshack_disk_assignments"
   "shellshack_restart_containers"
   "shellshack_restart_vms"
+  "shellshack_container_external_ip"
 )
