@@ -4,7 +4,7 @@
 ### USER CONFIG ###
 ### ----------- ###
 
-docker_containers=('binhex-delugevpn' 'plex') ## Specify containers to restart -- TIP: run "docker ps -a" in a console to find container names
+docker_containers=('binhex-delugevpn' 'plex') ## Specify containers to monitor -- TIP: run "docker ps -a" in a console to find container names
 
 obtain_wan_ip_directly="true" ## Specify whether or not to obtain the WAN IP of the unRAID server directly (as opposed to inside a container)
 

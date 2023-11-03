@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Load preferences from file
+source /boot/config/plugins/user.scripts/scripts/shellshack_folderfeed/prefs
+
+# Check if the variables in the prefs file are empty/nonexistent, and exit if true
+checked_variables=("path_to_monitor")
+for var in "${checked_variables[@]}"; do
+  if [[ -z "${!var}" ]]; then
+        echo "Error: $var is not defined in the prefs file. Exiting..."
+        exit 1
+  fi
+done
+
+# use inotifywait to print a continuously updating list of all file/folder actions taken in the specified directory
+inotifywait -m -r -e create,delete "$path_to_monitor" | while read path action file; do echo "File $file $action in $path"; done

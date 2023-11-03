@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # shellshack_container_external_ip script
-# Chris Neal - v1.1 - August 21st, 2023
+# Chris Neal - v1.2 - November 3rd, 2023
 # SPECIFY PARAMETERS IN THE FOLLOWING FILE: /boot/config/plugins/user.scripts/scripts/shellshack_container_external_ip/prefs
 
 # Load preferences from file

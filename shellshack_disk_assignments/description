@@ -1,3 +1,3 @@
 Read unRAID's disk assignments file and store disk positions & ID numbers in a text file on the flash drive.
 The file is stored here: /boot/config/diskassignments.backup.txt
-An unfiltered backup of the ini file is located here: /boot/config/diskassignments.ini.backup.txt
+An unformatted backup of the ini file is located here: /boot/config/diskassignments.ini.backup.txt

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+### ----------- ###
+### USER CONFIG ###
+### ----------- ###
+
+path_to_monitor="/mnt/user/system"

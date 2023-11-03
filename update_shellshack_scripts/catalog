@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # update_shellshack_scripts file catalog
-# Chris Neal - v1.3 - August 21st, 2023
+# Chris Neal - Catalog v1.4 - November 3rd, 2023
 
 # List of files to update
 FILES=(
@@ -42,6 +42,11 @@ FILES=(
   "shellshack_container_external_ip/name"
   "shellshack_container_external_ip/prefs_template"
   "shellshack_container_external_ip/script"
+
+  "shellshack_folderfeed/description"
+  "shellshack_folderfeed/name"
+  "shellshack_folderfeed/prefs_template"
+  "shellshack_folderfeed/script"
 )
 
 # List of directories to check and create if necessary
@@ -54,4 +59,5 @@ DIRECTORIES=(
   "shellshack_restart_containers"
   "shellshack_restart_vms"
   "shellshack_container_external_ip"
+  "shellshack_folderfeed"
 )

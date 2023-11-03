@@ -1,0 +1,3 @@
+This configurable script prints a continuously updated list of file and folder actions taken in a directory specified in the prefs file.
+Edit the 'prefs' file before running, located here:
+/boot/config/plugins/user.scripts/scripts/shellshack_folderfeed/prefs
