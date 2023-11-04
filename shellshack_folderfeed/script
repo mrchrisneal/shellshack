@@ -13,4 +13,4 @@ for var in "${checked_variables[@]}"; do
 done
 
 # use inotifywait to print a continuously updating list of all file/folder actions taken in the specified directory
-inotifywait -m -r -e create,delete "$path_to_monitor" | while read path action file; do echo "File $file $action in $path"; done
+inotifywait -m -r -e create,delete --format 'File %e: "%f" in path: "%w"' "$path_to_monitor"
